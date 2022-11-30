@@ -6,7 +6,7 @@
 #    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:45:40 by aperin            #+#    #+#              #
-#    Updated: 2022/11/29 21:06:15 by aperin           ###   ########.fr        #
+#    Updated: 2022/11/30 10:46:53 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ FT_PRINTF		= ${FT_PRINTF_DIR}/libftprintf.a
 
 # Rules
 ${OBJSDIR}/%.o: ${SRCS_DIR}/%.c
-			@mkdir -p ${OBJSDIR} ${S_OBJS_DIR}
+			@mkdir -p ${OBJSDIR} ${S_OBJS_DIR} ${C_OBJS_DIR}
 			${CC} ${CFLAGS} ${INCS} -c -o $@ $<
 
 all:		${NAME}

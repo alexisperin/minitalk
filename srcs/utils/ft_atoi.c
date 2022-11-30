@@ -6,9 +6,11 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:24:20 by aperin            #+#    #+#             */
-/*   Updated: 2022/11/29 19:24:38 by aperin           ###   ########.fr       */
+/*   Updated: 2022/11/30 10:44:10 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 int	ft_atoi(const char *str)
 {

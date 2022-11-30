@@ -6,13 +6,20 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/11/29 19:21:15 by aperin           ###   ########.fr       */
+/*   Updated: 2022/11/30 10:47:38 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <sys/types.h>
+#include <signal.h>
 #include "ft_printf.h"
+
+void	ff(int signum)
+{
+	(void) signum;
+	ft_printf("SIGUSR1 received\n");
+}
 
 int	main(void)
 {
@@ -20,4 +27,9 @@ int	main(void)
 
 	pid = getpid();
 	ft_printf("%d\n", pid);
+	signal(SIGUSR1, ff);
+	while (1)
+	{
+		pause();
+	}
 }
