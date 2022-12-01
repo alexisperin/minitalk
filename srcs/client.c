@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:21:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/01 08:25:31 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/01 18:51:48 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <sys/types.h>
 #include <signal.h>
 
-char	*string_to_binary(char *str)
+static char	*string_to_binary(char *str)
 {
 	char	*binary;
 	size_t	i;
@@ -37,12 +37,36 @@ char	*string_to_binary(char *str)
 		}
 		i++;
 	}
+	binary[i * CHAR_BIT] = 0;
 	return (binary);
 }
-#include <stdio.h>
+
+static void	send_message(pid_t server_id, char *binary)
+{
+	size_t	i;
+	int		ret;
+
+	i = 0;
+	while (binary[i])
+	{
+		if (binary[i] == '0')
+			ret = kill(server_id, SIGUSR1);
+		else
+			ret = kill(server_id, SIGUSR2);
+		if (ret == -1)
+		{
+			ft_printf("Message could not be sent\n");
+			return ;
+		}
+		i++;
+		usleep(50);
+	}
+}
+
 int	main(int ac, char **av)
 {
 	pid_t	server_id;
+	char	*binary;
 
 	if (ac < 3)
 		ft_printf("Not enough input arguments\n");
@@ -51,8 +75,12 @@ int	main(int ac, char **av)
 	else
 	{
 		server_id = ft_atoi(av[1]);
-		kill(server_id, SIGUSR1);
-		printf("%s\n", string_to_binary(av[2]));
+		binary = string_to_binary(av[2]);
+		if (!binary)
+			exit(EXIT_FAILURE);
+		send_message(server_id, binary);
+		free(binary);
 		exit(EXIT_SUCCESS);
 	}
+	exit(EXIT_FAILURE);
 }
