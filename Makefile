@@ -6,7 +6,7 @@
 #    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:45:40 by aperin            #+#    #+#              #
-#    Updated: 2022/11/30 10:46:53 by aperin           ###   ########.fr        #
+#    Updated: 2022/12/01 08:18:41 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SERVER		= server
 S_FILES		= server.c
 
 C_FILES		= client.c \
-				utils/ft_atoi.c
+				utils/utils.c
 				
 SRCS_DIR	= srcs
 OBJSDIR		= objs
