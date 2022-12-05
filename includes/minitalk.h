@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:53 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/01 08:20:45 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/05 18:17:23 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # ifndef CHAR_BIT
 #  define CHAR_BIT 8
 # endif
+
+# define BUFFER_SIZE 10000
 
 # include <stdlib.h>
 

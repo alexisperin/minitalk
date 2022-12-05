@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/05 14:39:36 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/05 18:17:39 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 void	signal_handler(int signum)
 {
+	static char	buf[BUFFER_SIZE];
+	static int	i = 0;
 	static char	c = 0;
 	static int	bits_received = 0;
 
@@ -25,11 +27,18 @@ void	signal_handler(int signum)
 	bits_received++;
 	if (bits_received == CHAR_BIT)
 	{
-		write(1, &c, 1);
+		buf[i] = c;
+		i++;
+		if (!c || i == BUFFER_SIZE)
+		{
+			write(1, buf, i);
+			i = 0;
+		}
 		bits_received = 0;
 		c = 0;
 	}
-	c = c << 1;
+	else
+		c = c << 1;
 }
 
 int	main(void)
