@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:21:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/01 18:51:48 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/05 13:10:20 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ static char	*string_to_binary(char *str)
 		j = 0;
 		while (j < CHAR_BIT)
 		{
-			binary[(i * CHAR_BIT) + j] = (str[i] >> (CHAR_BIT - 1 - j) & 1) + 48;
+			binary[(i * CHAR_BIT) + j] = (str[i] >> (CHAR_BIT - 1 - j) & 1);
+			binary[(i * CHAR_BIT) + j] += 48;
 			j++;
 		}
 		i++;
@@ -59,7 +60,7 @@ static void	send_message(pid_t server_id, char *binary)
 			return ;
 		}
 		i++;
-		usleep(50);
+		usleep(100);
 	}
 }
 
