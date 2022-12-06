@@ -6,15 +6,11 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/06 10:31:48 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:07:34 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <sys/types.h>
-#include <signal.h>
 #include "minitalk.h"
-#include "ft_printf.h"
 
 void	signal_handler(int signum)
 {

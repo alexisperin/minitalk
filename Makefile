@@ -6,7 +6,7 @@
 #    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:45:40 by aperin            #+#    #+#              #
-#    Updated: 2022/12/01 08:18:41 by aperin           ###   ########.fr        #
+#    Updated: 2022/12/06 13:10:35 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,8 +17,7 @@ SERVER		= server
 
 S_FILES		= server.c
 
-C_FILES		= client.c \
-				utils/utils.c
+C_FILES		= client.c ft_atoi.c
 				
 SRCS_DIR	= srcs
 OBJSDIR		= objs
@@ -69,4 +68,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re NAME
+.PHONY:		all clean fclean re NAME SERVER CLIENT

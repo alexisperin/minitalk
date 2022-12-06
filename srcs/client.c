@@ -6,14 +6,11 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 19:21:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/06 10:35:08 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/06 13:07:13 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-#include "ft_printf.h"
-#include <sys/types.h>
-#include <signal.h>
 
 static int	send_char(pid_t server_id, char c)
 {
@@ -33,7 +30,7 @@ static int	send_char(pid_t server_id, char c)
 			return (0);
 		}
 		i++;
-		usleep(100);
+		usleep(50);
 	}
 	return (1);
 }
@@ -54,12 +51,12 @@ int	main(int ac, char **av)
 		while (av[2][i])
 		{
 			if (!send_char(server_id, av[2][i]))
-				exit(EXIT_FAILURE);
+				return (-1);
 			i++;
 		}
 		if (!send_char(server_id, '\0'))
-			exit(EXIT_FAILURE);
-		exit(EXIT_SUCCESS);
+			return (-1);
+		return (0);
 	}
-	exit(EXIT_FAILURE);
+	return (-1);
 }
