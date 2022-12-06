@@ -6,7 +6,7 @@
 #    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:45:40 by aperin            #+#    #+#              #
-#    Updated: 2022/12/06 13:10:35 by aperin           ###   ########.fr        #
+#    Updated: 2022/12/06 15:10:00 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,10 @@ SERVER		= server
 S_FILES		= server.c
 
 C_FILES		= client.c ft_atoi.c
+
+S_FILES_B	= server_bonus.c
+
+C_FILES_B	= client_bonus.c ft_atoi.c
 				
 SRCS_DIR	= srcs
 OBJSDIR		= objs
@@ -30,6 +34,14 @@ S_OBJS_DIR	= $(sort $(dir $(S_OBJS)))
 C_SRCS		= $(addprefix ${SRCS_DIR}/, ${C_FILES})
 C_OBJS		= $(addprefix ${OBJSDIR}/, $(addsuffix .o, $(basename ${C_FILES})))
 C_OBJS_DIR	= $(sort $(dir $(C_OBJS)))
+
+S_SRCS_B		= $(addprefix ${SRCS_DIR}/, ${S_FILES_B})
+S_OBJS_B		= $(addprefix ${OBJSDIR}/, $(addsuffix .o, $(basename ${S_FILES_B})))
+S_OBJS_DIR_B	= $(sort $(dir $(S_OBJS_B)))
+
+C_SRCS_B		= $(addprefix ${SRCS_DIR}/, ${C_FILES_B})
+C_OBJS_B		= $(addprefix ${OBJSDIR}/, $(addsuffix .o, $(basename ${C_FILES_B})))
+C_OBJS_DIR_B	= $(sort $(dir $(C_OBJS_B)))
 
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
@@ -56,6 +68,11 @@ ${SERVER}:	${S_OBJS}
 ${CLIENT}:	${C_OBJS}
 			@make -C ${FT_PRINTF_DIR}
 			${CC} ${C_OBJS} ${FT_PRINTF} -o ${CLIENT}
+
+bonus:		${C_OBJS_B} ${S_OBJS_B}
+			@make -C ${FT_PRINTF_DIR}
+			${CC} ${C_OBJS_B} ${FT_PRINTF} -o ${CLIENT}
+			${CC} ${S_OBJS_B} ${FT_PRINTF} -o ${SERVER}
 
 clean:
 			@make clean -C ${FT_PRINTF_DIR}

@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
+/*   server_bonus.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 17:41:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/06 15:45:11 by aperin           ###   ########.fr       */
+/*   Created: 2022/12/06 14:31:56 by aperin            #+#    #+#             */
+/*   Updated: 2022/12/06 16:16:21 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	signal_handler(int signum)
+void	signal_handler(int signum, siginfo_t *info, void *context)
 {
 	static char	buf[BUFFER_SIZE];
 	static int	i = 0;
 	static char	c = 0;
 	static int	bits_received = 0;
 
+	(void) context;
+	kill(info->si_pid, SIGUSR1);
 	c += (signum == SIGUSR1);
 	bits_received++;
 	if (bits_received == CHAR_BIT)
@@ -27,6 +29,8 @@ void	signal_handler(int signum)
 		i++;
 		if (!c || i == BUFFER_SIZE)
 		{
+			if (!c)
+				kill(info->si_pid, SIGUSR2);
 			write(1, buf, i);
 			i = 0;
 		}
@@ -39,12 +43,13 @@ void	signal_handler(int signum)
 
 int	main(void)
 {
-	pid_t	pid;
+	struct sigaction	action;
 
-	pid = getpid();
-	ft_printf("Server PID: %d\n", pid);
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	ft_printf("Server PID: %d\n", getpid());
+	action.sa_sigaction = signal_handler;
+	action.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &action, 0);
+	sigaction(SIGUSR2, &action, 0);
 	while (1)
 		pause();
 	return (0);
