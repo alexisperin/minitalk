@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/05 18:17:39 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/06 10:31:48 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	signal_handler(int signum)
 	static char	c = 0;
 	static int	bits_received = 0;
 
-	c += (signum == SIGUSR2);
+	c += (signum == SIGUSR1);
 	bits_received++;
 	if (bits_received == CHAR_BIT)
 	{
