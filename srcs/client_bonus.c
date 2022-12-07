@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:31:50 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/07 11:16:33 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/07 12:00:01 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,6 @@ static void	send_string(pid_t server_id, char *str)
 	i = 0;
 	while (str[i])
 	{
-		signal(SIGUSR1, signal_handler);
-		signal(SIGUSR2, signal_handler);
 		send_char(server_id, str[i]);
 		i++;
 	}
@@ -67,6 +65,8 @@ int	main(int ac, char **av)
 	if (ac == 3)
 	{
 		server_id = ft_atoi(av[1]);
+		signal(SIGUSR1, signal_handler);
+		signal(SIGUSR2, signal_handler);
 		send_string(server_id, av[2]);
 		return (0);
 	}
