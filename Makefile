@@ -6,7 +6,7 @@
 #    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:45:40 by aperin            #+#    #+#              #
-#    Updated: 2022/12/07 10:18:05 by aperin           ###   ########.fr        #
+#    Updated: 2022/12/07 12:57:41 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,4 +87,4 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re NAME SERVER CLIENT
+.PHONY:		all clean fclean re NAME SERVER CLIENT bonus
