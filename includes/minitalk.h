@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:53 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/07 11:43:25 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/07 15:54:57 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # define BUFFER_SIZE 500
 
-# include <stdlib.h>
 # include <sys/types.h>
 # include <signal.h>
 # include "ft_printf.h"
