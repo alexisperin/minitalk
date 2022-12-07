@@ -6,7 +6,7 @@
 #    By: aperin <aperin@student.s19.be>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/29 17:45:40 by aperin            #+#    #+#              #
-#    Updated: 2022/12/06 15:10:00 by aperin           ###   ########.fr        #
+#    Updated: 2022/12/07 10:18:05 by aperin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,9 @@ NAME		= minitalk
 
 CLIENT		= client
 SERVER		= server
+
+CLIENT_B	= client_bonus
+SERVER_B	= server_bonus
 
 S_FILES		= server.c
 
@@ -71,8 +74,8 @@ ${CLIENT}:	${C_OBJS}
 
 bonus:		${C_OBJS_B} ${S_OBJS_B}
 			@make -C ${FT_PRINTF_DIR}
-			${CC} ${C_OBJS_B} ${FT_PRINTF} -o ${CLIENT}
-			${CC} ${S_OBJS_B} ${FT_PRINTF} -o ${SERVER}
+			${CC} ${C_OBJS_B} ${FT_PRINTF} -o ${CLIENT_B}
+			${CC} ${S_OBJS_B} ${FT_PRINTF} -o ${SERVER_B}
 
 clean:
 			@make clean -C ${FT_PRINTF_DIR}
@@ -80,8 +83,7 @@ clean:
 
 fclean:		clean
 			@make fclean -C ${FT_PRINTF_DIR}
-			rm -f ${CLIENT}
-			rm -f ${SERVER}
+			rm -f ${CLIENT} ${SERVER} ${CLIENT_B} ${SERVER_B}
 
 re:			fclean all
 

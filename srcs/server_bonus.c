@@ -6,13 +6,13 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 14:31:56 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/06 16:16:21 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/07 11:35:19 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	signal_handler(int signum, siginfo_t *info, void *context)
+static void	signal_handler(int signum, siginfo_t *info, void *context)
 {
 	static char	buf[BUFFER_SIZE];
 	static int	i = 0;
@@ -20,11 +20,11 @@ void	signal_handler(int signum, siginfo_t *info, void *context)
 	static int	bits_received = 0;
 
 	(void) context;
-	kill(info->si_pid, SIGUSR1);
 	c += (signum == SIGUSR1);
 	bits_received++;
 	if (bits_received == CHAR_BIT)
 	{
+		kill(info->si_pid, SIGUSR1);
 		buf[i] = c;
 		i++;
 		if (!c || i == BUFFER_SIZE)

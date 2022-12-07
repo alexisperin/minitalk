@@ -6,7 +6,7 @@
 /*   By: aperin <aperin@student.s19.be>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:41:53 by aperin            #+#    #+#             */
-/*   Updated: 2022/12/06 15:23:37 by aperin           ###   ########.fr       */
+/*   Updated: 2022/12/07 11:43:25 by aperin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <signal.h>
-
 # include "ft_printf.h"
 
 int		ft_atoi(const char *str);
